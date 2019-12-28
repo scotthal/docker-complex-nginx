@@ -9,3 +9,5 @@ script:
 
 after_success:
   - docker build -t scotthal/docker-complex-nginx .
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push scotthal/docker-complex-nginx
